@@ -6,16 +6,12 @@
     <engine>
         <property name="deploymentExportPath">target/</property>
     </engine>
-    <extension qualifier="webdriver">
-        <property name="browser">firefox</property>
-    </extension>
-    <container qualifier="glassfish" default="true">
+    <container qualifier="chameleon" default="true">
         <configuration>
-            <property name="glassFishHome">C:\glassfish4.1</property>
-            <property name="adminHost">localhost</property>
-            <property name="adminPort">4848</property>
-            <property name="adminUser">admin</property>
-            <property name="adminPassword">admin</property>
+            <property name="chameleonTarget">jboss eap:7.0.0.Final:remote</property>
+            <property name="managementAddress">localhost</property>
+            <property name="username">admin</property>
+            <property name="password">YOUR_JBOSSEAP_PASSWORD</property>
         </configuration>
     </container>
 </arquillian>
