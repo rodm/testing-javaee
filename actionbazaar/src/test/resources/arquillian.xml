@@ -14,4 +14,11 @@
             <property name="password">YOUR_JBOSSEAP_PASSWORD</property>
         </configuration>
     </container>
+
+    <container qualifier="jbosseap70">
+        <configuration>
+            <property name="chameleonTarget">jboss eap:7.0.0.Final:managed</property>
+            <property name="jbossHome">${jboss.home}</property>
+        </configuration>
+    </container>
 </arquillian>
