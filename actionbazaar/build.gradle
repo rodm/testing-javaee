@@ -1,0 +1,36 @@
+
+plugins {
+    id 'war'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+group = 'com.actionbazaar'
+version = '1.0-SNAPSHOT'
+
+sourceSets {
+    test {
+        resources {
+            srcDir('src/main/webapp')
+        }
+    }
+}
+
+dependencies {
+    providedCompile group: 'javax', name: 'javaee-api', version: '7.0'
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-container', version: '1.1.5.Final'
+    testCompile group: 'org.jboss.shrinkwrap.resolver', name: 'shrinkwrap-resolver-depchain', version: '2.1.0'
+    testCompile group: 'org.jboss.arquillian.extension', name: 'arquillian-drone-webdriver-depchain', version: '1.3.1.Final'
+    testCompile group: 'org.arquillian.container', name: 'arquillian-container-chameleon', version: '1.0.0.Alpha6'
+}
+
+war {
+    archiveName 'actionbazaar.war'
+}
