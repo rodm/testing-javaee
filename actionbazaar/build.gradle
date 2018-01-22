@@ -15,6 +15,7 @@ version = '1.0-SNAPSHOT'
 
 ext {
     jbossEap7Home = project.findProperty('jbosseap70.home')
+    wildfly11Home = project.findProperty('wildfly11.home')
 }
 
 sourceSets {
@@ -44,4 +45,11 @@ task testJBossEAP7(type: Test, dependsOn: testClasses) {
     group = 'verification'
     systemProperty 'arquillian.launch', 'jbosseap70'
     systemProperty 'jboss.home', jbossEap7Home
+}
+
+task testWildFly11(type: Test, dependsOn: testClasses) {
+    description = 'Runs the tests using WildFly 11.0'
+    group = 'verification'
+    systemProperty 'arquillian.launch', 'wildfly11'
+    systemProperty 'jboss.home', wildfly11Home
 }
