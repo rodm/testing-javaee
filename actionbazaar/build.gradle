@@ -14,6 +14,7 @@ group = 'com.actionbazaar'
 version = '1.0-SNAPSHOT'
 
 ext {
+    glassfish4Home = project.findProperty('glassfish4.home')
     jbossEap7Home = project.findProperty('jbosseap70.home')
     wildfly11Home = project.findProperty('wildfly11.home')
 }
@@ -40,9 +41,23 @@ war {
     archiveName 'actionbazaar.war'
 }
 
+task testGlassFish41(type: Test, dependsOn: testClasses) {
+    description = 'Runs the tests using GlassFish 4.1'
+    group = 'verification'
+
+    classpath += files('src/test/resources-glassfish')
+
+    environment 'JAVA_HOME', System.properties['java.home']
+    systemProperty 'arquillian.launch', 'glassfish41'
+    systemProperty 'glassfish.home', glassfish4Home
+}
+
 task testJBossEAP7(type: Test, dependsOn: testClasses) {
     description = 'Runs the tests using JBoss EAP 7.0'
     group = 'verification'
+
+    classpath += files('src/test/resources-jboss')
+
     systemProperty 'arquillian.launch', 'jbosseap70'
     systemProperty 'jboss.home', jbossEap7Home
 }
@@ -50,6 +65,9 @@ task testJBossEAP7(type: Test, dependsOn: testClasses) {
 task testWildFly11(type: Test, dependsOn: testClasses) {
     description = 'Runs the tests using WildFly 11.0'
     group = 'verification'
+
+    classpath += files('src/test/resources-jboss')
+
     systemProperty 'arquillian.launch', 'wildfly11'
     systemProperty 'jboss.home', wildfly11Home
 }

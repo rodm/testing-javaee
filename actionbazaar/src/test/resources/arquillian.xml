@@ -16,6 +16,14 @@
         </configuration>
     </container>
 
+    <container qualifier="glassfish41">
+        <configuration>
+            <property name="chameleonTarget">glassfish:4.1:managed</property>
+            <property name="glassFishHome">${glassfish.home}</property>
+            <property name="outputToConsole">true</property>
+        </configuration>
+    </container>
+
     <container qualifier="jbosseap70">
         <configuration>
             <property name="chameleonTarget">jboss eap:7.0.0.Final:managed</property>
